@@ -80,6 +80,57 @@ console.log("Power of two");
 console.log(isPowerOfTwo(1)); // true
 console.log(isPowerOfTwo(16)); // true
 console.log(isPowerOfTwo(18)); // false
-
 // Big O = O(1)
 //////////////////////////////////////////////////////////////////////////////
+
+function rescursiveeFactorial(n) {
+  if (n === 0) {
+    return 1;
+  }
+  return n * rescursiveeFactorial(n - 1); // Big (O) =O(N)
+}
+console.log(rescursiveeFactorial(5));
+
+/////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////
+// Search Method 1
+function search(n) {
+  let arr = [1, 2, 3, 4, 5];
+  if (arr.includes(n)) {
+    return arr.indexOf(n); // O(N)
+  } else {
+    return -1;
+  }
+}
+console.log(search(5));
+console.log(search(1));
+
+//Search Method 2
+function anotherSearch(n) {
+  let arr = [1, 2, 3, 4, 5];
+  let i = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === n) {
+      // o(N)
+      return arr.indexOf(n);
+    }
+  }
+  return -1;
+}
+console.log(anotherSearch(2));
+console.log(anotherSearch(3));
+
+// // Search Method 3
+function linearSearch(arr, target) {
+  let i = 0;
+  for (let i = 0; i < arr.length; i++) {
+    // o(N)
+    if (arr[i] === target) {
+      return i;
+    }
+  }
+  return -1;
+}
+console.log(linearSearch([1, 2, 3, 4, 5], 2));
+///////////////////////////////////////////////////
