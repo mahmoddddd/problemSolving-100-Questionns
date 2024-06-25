@@ -3,7 +3,7 @@
 // fibonancci (3)= [0,1,1]
 // fibonancci (4)= [0,1,1,2]
 // fibonancci (7)= [0,1,1,2,3,5,8]
-
+/*
 function fibonanacci(n) {
   const fib = [0, 1];
   for (let i = 2; i < n; i++) {
@@ -17,9 +17,11 @@ console.log(`fibonanacci ${fibonanacci(2)}`); // [0,1]
 console.log(`fibonanacci ${fibonanacci(3)}`); // [0,1,1]
 console.log(`fibonancci ${fibonanacci(4)}`); // [0,1,1,2,3,5,8]
 // Big O = O(n)
-
+*/
 /////////////////////////////////////////////////////////////
 // factorial number
+
+/* 
 // factorial (5)= 5*4*3*2*1 = 120
 // factorial (6)= 6*5*4*3*2*1 = 720
 function factorial(n) {
@@ -35,9 +37,10 @@ function factorial(n) {
 console.log(`factorial ${factorial(5)}`); // [5*4*3*2*1] = 120
 
 // O = O(n)
-
+*/
 ////////////////////////////////////////////////////////////////////////
 // prime Number //عدد اولي
+/* 
 function isPrime(n) {
   if (n < 2) {
     return false; // o(1)
@@ -55,11 +58,14 @@ function isPrime(n) {
 console.log(isPrime(1)); // false
 console.log(isPrime(5)); //true
 console.log(isPrime(4)); // false
+
 // O(sqrt(n)
+*/
 ///////////////////////////////////////////////////////////
 
 // Function to check if a number is a power of two
 // bitwith =  [1 , 1] = 1 else 0    // O(1)
+/*
 function isPowerOfTwo(n) {
   if (n === 1) return true; // 2^0 = 1, so this should return true // o(1)
   if (n === 0 || n % 2 !== 0) return false; // o(1)
@@ -70,8 +76,10 @@ console.log(isPowerOfTwo(1)); // true
 console.log(isPowerOfTwo(16)); // true
 console.log(isPowerOfTwo(18)); // false
 // Big O = O(log(n))
+*/
 
 // Function to check if a number is a power of two using bitwise operations
+/*
 function isPowerOfTwo(n) {
   // A number n is a power of two if n > 0 and (n & (n - 1)) == 0
   return n > 0 && (n & (n - 1)) === 0;
@@ -81,8 +89,9 @@ console.log(isPowerOfTwo(1)); // true
 console.log(isPowerOfTwo(16)); // true
 console.log(isPowerOfTwo(18)); // false
 // Big O = O(1)
+*/
 //////////////////////////////////////////////////////////////////////////////
-
+/*
 function rescursiveeFactorial(n) {
   if (n === 0) {
     return 1;
@@ -90,11 +99,13 @@ function rescursiveeFactorial(n) {
   return n * rescursiveeFactorial(n - 1); // Big (O) =O(N)
 }
 console.log(rescursiveeFactorial(5));
-
+*/
 /////////////////////////////////////////////////////////////
 
 /////////////////////////////////////////////////////////////
+
 // Search Method 1
+/*
 function search(n) {
   let arr = [1, 2, 3, 4, 5];
   if (arr.includes(n)) {
@@ -105,8 +116,10 @@ function search(n) {
 }
 console.log(search(5));
 console.log(search(1));
+*/
 
 //Search Method 2
+/*
 function anotherSearch(n) {
   let arr = [1, 2, 3, 4, 5];
   let i = 0;
@@ -120,8 +133,9 @@ function anotherSearch(n) {
 }
 console.log(anotherSearch(2));
 console.log(anotherSearch(3));
-
+*/
 // // Search Method 3
+/*
 function linearSearch(arr, target) {
   let i = 0;
   for (let i = 0; i < arr.length; i++) {
@@ -133,4 +147,32 @@ function linearSearch(arr, target) {
   return -1;
 }
 console.log(linearSearch([1, 2, 3, 4, 5], 2));
+*/
+///////////////////////////////////////////////////
+
+// // Binary Search Method 4
+function binarySearch(arr, target) {
+  let left = 0;
+  let right = arr.length - 1;
+
+  while (left <= right) {
+    const mid = Math.floor((left + right) / 2);
+
+    if (arr[mid] === target) {
+      return mid;
+    } else if (arr[mid] < target) {
+      left = mid + 1;
+    } else {
+      right = mid - 1;
+    }
+  }
+
+  return -1; // Element is not found
+}
+
+console.log(binarySearch([1, 2, 3, 4, 5], 5)); // Output: 4
+console.log(binarySearch([1, 2, 3, 4, 5], 1)); // Output: 0
+console.log(binarySearch([1, 2, 3, 4, 5], 3)); // Output: 2
+console.log(binarySearch([1, 2, 3, 4, 5], 6)); // Output: -1
+
 ///////////////////////////////////////////////////
