@@ -90,7 +90,25 @@ console.log(isPowerOfTwo(16)); // true
 console.log(isPowerOfTwo(18)); // false
 // Big O = O(1)
 */
+
 //////////////////////////////////////////////////////////////////////////////
+
+/*
+function recursiveFibonacci(n) {
+  if (n <= 0) {
+    return 0;
+  } else if (n === 1) {
+    return 1; // O(2**n)
+  } else {
+    return recursiveFibonacci(n - 1) + recursiveFibonacci(n - 2);
+  }
+}
+
+// Calculate the 5th Fibonacci number
+const result = recursiveFibonacci(5);
+console.log(result); // Outputs: 5
+*/
+
 /*
 function rescursiveeFactorial(n) {
   if (n === 0) {
@@ -134,6 +152,7 @@ function anotherSearch(n) {
 console.log(anotherSearch(2));
 console.log(anotherSearch(3));
 */
+
 // // Search Method 3
 /*
 function linearSearch(arr, target) {
@@ -148,10 +167,14 @@ function linearSearch(arr, target) {
 }
 console.log(linearSearch([1, 2, 3, 4, 5], 2));
 */
+
 ///////////////////////////////////////////////////
 
 // // Binary Search Method 4
+/*
 function binarySearch(arr, target) {
+  arr.sort((a, b) => a - b);
+
   let left = 0;
   let right = arr.length - 1;
 
@@ -170,9 +193,133 @@ function binarySearch(arr, target) {
   return -1; // Element is not found
 }
 
-console.log(binarySearch([1, 2, 3, 4, 5], 5)); // Output: 4
+console.log(binarySearch([1, 2, 3, 4, 5], 4)); // Output: 3
 console.log(binarySearch([1, 2, 3, 4, 5], 1)); // Output: 0
 console.log(binarySearch([1, 2, 3, 4, 5], 3)); // Output: 2
 console.log(binarySearch([1, 2, 3, 4, 5], 6)); // Output: -1
+*/
 
 ///////////////////////////////////////////////////
+
+// // recursive solution of binary search
+/*
+function binarySearchRecursive(arr, target, left = 0, right = arr.length - 1) {
+  if (left > right) {
+    return -1; // Element not found
+  }
+
+  const mid = Math.floor((left + right) / 2);
+
+  if (arr[mid] === target) {
+    return mid;
+  } else if (arr[mid] < target) {
+    return binarySearchRecursive(arr, target, mid + 1, right);
+  } else {
+    return binarySearchRecursive(arr, target, left, mid - 1);
+  }
+}
+
+console.log(binarySearchRecursive([1, 2, 3, 4, 5], 5));
+*/
+
+/*
+function bubbleSort(arr) {
+  let n = arr.length;
+
+  for (let i = 0; i < n - 1; i++) {
+    for (let j = 0; j < n - i - 1; j++) {
+      // `n - i - 1` لتجنب المقارنة مع العناصر المرتبة بالفعل
+      if (arr[j] > arr[j + 1]) {
+        // تبديل العناصر
+        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+      }
+    }
+  }
+
+  return arr;
+}
+
+let arrayToSort = [1, 2, 5, 8, 13, 9, 6, 12, 10];
+console.log(bubbleSort(arrayToSort));
+
+*/
+
+/*
+function bubbleSortSwaped(arr) {
+  let swapped;
+  do {
+    swapped = false;
+    for (let i = 0; i < arr.length - 1; i++) {
+      if (arr[i] > arr[i + 1]) {
+        let temp = arr[i];
+        arr[i] = arr[i + 1];
+        arr[i + 1] = temp;
+        swapped = true;
+      }
+    }
+  } while (swapped);
+}
+const arr = [1, 2, 8, 5, 7, 1, 9, 5, 4, 2, -2];
+bubbleSortSwaped(arr);
+console.log(arr);
+// 2 nested loop (O**n)
+*/
+
+/*
+// same function bt not dublicate numbers without use filter
+function bubbleSortSwapped(arr) {
+  let swapped;
+  do {
+    swapped = false;
+    for (let i = 0; i < arr.length - 1; i++) {
+      if (arr[i] > arr[i + 1]) {
+        let temp = arr[i];
+        arr[i] = arr[i + 1];
+        arr[i + 1] = temp;
+        swapped = true;
+      }
+    }
+  } while (swapped);
+}
+// Easy way
+// function removeDuplicates(arr) {
+//   return arr.filter((item, index) => arr.indexOf(item) === index);
+// }
+
+// Logic Way
+function removeDuplicates(arr) {
+  if (arr.length === 0) return [];
+
+  let uniqueArr = [arr[0]];
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] !== arr[i - 1]) {
+      uniqueArr.push(arr[i]);
+    }
+  }
+  return uniqueArr;
+}
+
+const arr = [1, 2, 8, 5, 7, 1, 9, 5, 4, 2, -2];
+bubbleSortSwapped(arr);
+const uniqueArr = removeDuplicates(arr);
+console.log(uniqueArr); // Outputs: [-2, 1, 2, 4, 5, 7, 8, 9]
+*/
+
+// Insertion Sort
+function insertionSort(arr) {
+  for (let i = 1; i < arr.length; i++) {
+    let current = arr[i];
+    let j = i - 1;
+
+    while (j >= 0 && arr[j] > current) {
+      arr[j + 1] = arr[j];
+      j--;
+    }
+
+    arr[j + 1] = current;
+  }
+}
+
+const arr = [9, 2, 5, 93, 7, 41];
+insertionSort(arr);
+console.log(arr); // Output: [2, 5, 7, 9, 41, 93]
