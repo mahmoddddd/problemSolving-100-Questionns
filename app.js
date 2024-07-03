@@ -306,20 +306,78 @@ console.log(uniqueArr); // Outputs: [-2, 1, 2, 4, 5, 7, 8, 9]
 */
 
 // Insertion Sort
+/*
 function insertionSort(arr) {
   for (let i = 1; i < arr.length; i++) {
     let current = arr[i];
-    let j = i - 1;
-
+    let j = i - 1; // j equal sorted part
+    // لو نقصت واحد ولسه اكبر منها ؟؟ بعمل وايل لوووب
     while (j >= 0 && arr[j] > current) {
-      arr[j + 1] = arr[j];
-      j--;
+      arr[j + 1] = arr[j]; // Shift element one position to the right
+      j--; // Move to the previous element
     }
 
-    arr[j + 1] = current;
+    arr[j + 1] = current; // Place current element in the correct position
   }
 }
 
 const arr = [9, 2, 5, 93, 7, 41];
 insertionSort(arr);
 console.log(arr); // Output: [2, 5, 7, 9, 41, 93]
+*/
+
+/*
+// Qick Sort
+function quickSort(arr) {
+  if (arr.length < 2) {
+    return arr; // Base case: arrays with 0 or 1 element are already sorted
+  }
+
+  let left = [];
+  let right = [];
+  let pivot = arr[arr.length - 1];
+
+  for (let i = 0; i < arr.length - 1; i++) {
+    if (arr[i] < pivot) {
+      left.push(arr[i]);
+    } else {
+      right.push(arr[i]);
+    }
+  }
+  return quickSort(left).concat(pivot, quickSort(right));
+}
+
+const arr = [1, 2, 8, 5, 4, -5, 3];
+const sortedArr = quickSort(arr);
+console.log(sortedArr); // Outputs: [-5, 1, 2, 3, 4, 5, 8]
+// worest case : o**n
+// avarege case : on (nlogn)
+/*
+/////////////////////////////////////////////
+
+
+// Cartesian Product
+/*
+function cartesian(arr1, arr2) {
+  let result = [];
+  for (let i = 0; i < arr1.length; i++) {
+    for (let j = 0; j < arr2.length; j++) {
+      result.push([arr1[i], arr2[j]]); // add normal elementas indexess to result array
+    }
+  }
+  return result;
+}
+
+const arr1 = [1, 2];
+const arr2 = [3, 4, 5];
+console.log(cartesian(arr1, arr2));
+big O = O(n * m)
+*/
+
+function climbingStairs(n) {
+  if (n === 1) return 1;
+  if (n === 2) return 2;
+  return climbingStairs(n - 1) + climbingStairs(n - 2);
+} // Big O = O(2^n)
+
+console.log(climbingStairs(5));
