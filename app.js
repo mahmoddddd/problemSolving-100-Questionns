@@ -374,6 +374,7 @@ console.log(cartesian(arr1, arr2));
 big O = O(n * m)
 */
 
+/*
 function climbingStairs(n) {
   if (n === 1) return 1;
   if (n === 2) return 2;
@@ -381,3 +382,44 @@ function climbingStairs(n) {
 } // Big O = O(2^n)
 
 console.log(climbingStairs(5));
+// Outputs: 8
+*/
+
+/*
+function climbingStairs(n) {
+  const noOfWay = [1, 2];
+  for (let i = 2; i <= n; i++) {
+    noOfWay[i] = noOfWay[i - 1] + noOfWay[i - 2];
+  }
+  return noOfWay[n - 1];
+}
+console.log(climbingStairs(5));
+// Outputs: 8
+// big O = O(N)
+*/
+
+/*
+// power of hanoi
+function powerOfHanoi(n, fromRod, toRod, usingRod) {
+  if (n === 1) {
+    console.log(`Move Disk 1 from ${fromRod} to ${toRod}`);
+    return;
+  }
+  powerOfHanoi(n - 1, fromRod, usingRod, toRod);
+  console.log(`Move Disk ${n} from ${fromRod} to ${toRod}`);
+  powerOfHanoi(n - 1, usingRod, toRod, fromRod);
+}
+powerOfHanoi(3, "A", "C", "B");
+// big O = O(2^N)
+*/
+// explation
+/*
+A
+B
+C 
+  1    A...c
+  2    a.. B 
+  1    C .. B 
+  3    A .. c   
+  
+  */
