@@ -54,3 +54,31 @@ stack.pop();
 stack.pop();
 console.log(`stack size ${stack.size()}`);
 console.log(`stack top element ${stack.peek()}`);
+
+// problem solving in leetCode >> Valid Parentheses
+
+function isValidParentheses(s) {
+  const stack = [];
+  const map = {
+    "(": ")",
+    "{": "}",
+    "[": "]",
+  };
+
+  for (const char of s) {
+    if (char in map) {
+      stack.push(char);
+    } else if (stack.length === 0 || map[stack.pop()] !== char) {
+      return false;
+    }
+  }
+
+  return stack.length === 0;
+}
+
+// Usage examples
+console.log(isValidParentheses("()")); // Output: true
+console.log(isValidParentheses("()[]{}")); // Output: true
+console.log(isValidParentheses("(]")); // Output: false
+console.log(isValidParentheses("([)]")); // Output: false
+console.log(isValidParentheses("{[]}")); // Output: true
