@@ -82,3 +82,68 @@ console.log(isValidParentheses("()[]{}")); // Output: true
 console.log(isValidParentheses("(]")); // Output: false
 console.log(isValidParentheses("([)]")); // Output: false
 console.log(isValidParentheses("{[]}")); // Output: true
+
+// minStack Problem
+// Constructor function for MinStack
+var MinStack = function () {
+  // Initialize two stacks:
+  // stack: to store all the elements
+  // minStack: to store the minimum elements
+  this.stack = [];
+  this.minStack = [];
+};
+
+// Push function to add an element to the stack
+MinStack.prototype.push = function (val) {
+  // Push the value onto the main stack
+  this.stack.push(val);
+
+  // If minStack is empty or the new value is less than or equal to the current minimum,
+  // push it onto the minStack
+  if (
+    this.minStack.length === 0 ||
+    val <= this.minStack[this.minStack.length - 1]
+  ) {
+    this.minStack.push(val);
+  }
+};
+
+// Pop function to remove the top element from the stack
+MinStack.prototype.pop = function () {
+  // Pop the value from the main stack
+  const poppedValue = this.stack.pop();
+
+  // If the popped value is the same as the top element of the minStack,
+  // pop it from the minStack as well
+  if (poppedValue === this.minStack[this.minStack.length - 1]) {
+    this.minStack.pop();
+  }
+};
+
+// Top function to get the top element of the stack without removing it
+MinStack.prototype.top = function () {
+  // Return the top element of the main stack
+  return this.stack[this.stack.length - 1];
+};
+
+// GetMin function to retrieve the minimum element in the stack
+MinStack.prototype.getMin = function () {
+  // Return the top element of the minStack, which is the current minimum
+  return this.minStack[this.minStack.length - 1];
+};
+
+var minStack = new MinStack();
+minStack.push(-2);
+minStack.push(0);
+minStack.push(-3);
+console.log(minStack.getMin()); // Output: -3
+minStack.pop();
+console.log(minStack.top()); // Output: 0
+console.log(minStack.getMin()); // Output: -2
+/* Example 1:
+ * After pushing -2, 0, and -3, the stack is [-2, 0, -3] and the minStack is [-2, -3].
+ * getMin() returns -3, the current minimum.
+ * After pop(), the stack is [-2, 0] and the minStack is [-2].
+ * top() returns 0, the current top element.
+ * getMin() returns -2, the new current minimum.
+ */
