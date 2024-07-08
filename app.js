@@ -1,3 +1,5 @@
+// Algorithms JavaScript
+
 // fibonanacci sequence
 // fibonancci (2)= [0,1]
 // fibonancci (3)= [0,1,1]
