@@ -86,20 +86,14 @@ console.log(isValidParentheses("{[]}")); // Output: true
 // minStack Problem
 // Constructor function for MinStack
 var MinStack = function () {
-  // Initialize two stacks:
-  // stack: to store all the elements
-  // minStack: to store the minimum elements
   this.stack = [];
   this.minStack = [];
 };
 
 // Push function to add an element to the stack
 MinStack.prototype.push = function (val) {
-  // Push the value onto the main stack
   this.stack.push(val);
 
-  // If minStack is empty or the new value is less than or equal to the current minimum,
-  // push it onto the minStack
   if (
     this.minStack.length === 0 ||
     val <= this.minStack[this.minStack.length - 1]
@@ -110,7 +104,6 @@ MinStack.prototype.push = function (val) {
 
 // Pop function to remove the top element from the stack
 MinStack.prototype.pop = function () {
-  // Pop the value from the main stack
   const poppedValue = this.stack.pop();
 
   // If the popped value is the same as the top element of the minStack,
@@ -122,13 +115,11 @@ MinStack.prototype.pop = function () {
 
 // Top function to get the top element of the stack without removing it
 MinStack.prototype.top = function () {
-  // Return the top element of the main stack
   return this.stack[this.stack.length - 1];
 };
 
 // GetMin function to retrieve the minimum element in the stack
 MinStack.prototype.getMin = function () {
-  // Return the top element of the minStack, which is the current minimum
   return this.minStack[this.minStack.length - 1];
 };
 
