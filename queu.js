@@ -50,3 +50,8 @@ queue.dequeue(); // Removes 3 from the queue
 console.log(queue.isEmpty()); // Output: true (queue is now empty)
 
 console.log(queue.peek()); // Output: null (queue is empty)
+
+// constant time complexty
+// class Queue {
+//   constructor() {}
+// }
