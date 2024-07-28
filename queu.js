@@ -51,7 +51,69 @@ console.log(queue.isEmpty()); // Output: true (queue is now empty)
 
 console.log(queue.peek()); // Output: null (queue is empty)
 
-// constant time complexty
-// class Queue {
-//   constructor() {}
-// }
+// Another Way
+class Queuee {
+  constructor() {
+    this.items = {};
+    this.rear = 0;
+    this.front = 0;
+  }
+
+  enqueue(element) {
+    this.items[this.rear] = element;
+    this.rear++;
+  }
+
+  dequeue() {
+    if (this.isEmpty()) {
+      return null; // Return null if the queue is empty
+    }
+    const item = this.items[this.front];
+    delete this.items[this.front];
+    this.front++;
+    return item;
+  }
+
+  isEmpty() {
+    return this.rear - this.front === 0;
+  }
+
+  peek() {
+    if (this.isEmpty()) {
+      return null; // Return null if the queue is empty
+    }
+    return this.items[this.front];
+  }
+
+  size() {
+    return this.rear - this.front;
+  }
+
+  print() {
+    console.log(this.items);
+  }
+}
+
+const queuee = new Queuee();
+queuee.enqueue(20); // Adds 20 to the queue
+queuee.enqueue(30); // Adds 30 to the queue
+queuee.enqueue(40); // Adds 40 to the queue
+
+console.log(queuee.peek()); // Outputs: 20
+
+console.log(queuee.dequeue()); // Outputs: 20
+
+console.log(queuee.peek()); // Outputs: 30
+
+console.log(queuee.size()); // Outputs: 2
+
+queuee.print(); // Output: { '1': 30, '2': 40 }
+
+console.log(queuee.isEmpty()); // Outputs: false
+
+queuee.dequeue(); // Removes 30
+queuee.dequeue(); // Removes 40
+
+console.log(queuee.isEmpty()); // Outputs: true
+
+console.log(queuee.peek()); // Outputs: null
